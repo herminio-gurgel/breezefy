@@ -30,7 +30,9 @@ defineProps({
             <nav v-if="canLogin">
                 <Link
                     v-if="$page.props.auth.user"
+                    as="button"
                     :href="route('dashboard')"
+                    class="px-3 py-2"
                 >
                     Dashboard
                 </Link>
