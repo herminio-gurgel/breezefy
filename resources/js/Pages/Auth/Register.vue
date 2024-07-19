@@ -60,9 +60,9 @@ const submit = () => {
                     type="submit"
                     color="black"
                     :disabled="form.processing"
-                    class="ms-4">
-                    REGISTER
-                </v-btn>
+                    class="ms-4"
+                    text="register"
+                />
             </div>
         </v-form>
     </GuestLayout>
