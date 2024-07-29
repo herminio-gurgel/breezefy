@@ -42,14 +42,14 @@ defineProps({
                         as="button"
                         :href="route('login')"
                     >
-                        <v-btn>Login</v-btn>
+                        <v-btn class="text-capitalize">Login</v-btn>
                     </Link>
 
                     <Link
                         as="button"
                         :href="route('register')"
                     >
-                        <v-btn>Register</v-btn>
+                        <v-btn class="text-capitalize">Register</v-btn>
                     </Link>
                 </template>
             </nav>
