@@ -94,7 +94,8 @@ const drawer = ref(false)
         </div>
 
         <v-navigation-drawer
-            class="d-sm-none"
+            absolute
+            class="d-sm-none "
             v-model="drawer"
             disable-resize-watcher
             location="top"
