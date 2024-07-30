@@ -4,18 +4,25 @@ import {Link} from '@inertiajs/vue3';
 </script>
 
 <template>
-    <div class="h-screen d-flex flex-column justify-center align-center pt-6 pt-sm-0 bg-grey-lighten-4">
-        <div>
-            <Link href="/">
-                <ApplicationLogo style="width: 80px; height: 80px"/>
-            </Link>
-        </div>
+    <div class="h-screen d-flex flex-column justify-center align-center pt-sm-0 pt-6 bg-grey-lighten-4">
+        <Link href="/">
+            <ApplicationLogo style="width: 80px; height: 80px;"/>
+        </Link>
 
-        <div
-            class="w-100 mt-6 px-6 py-4 bg-white elevation-2 overflow-hidden rounded-lg"
-            style="max-width: 448px"
+        <v-sheet
+            rounded="lg"
+            elevation="2"
+            class="sheet w-100 mt-6 px-6 py-4 bg-white overflow-hidden"
         >
             <slot/>
-        </div>
+        </v-sheet>
     </div>
 </template>
+
+<style scoped>
+@media only screen and (min-width: 600px) {
+    .sheet {
+        max-width: 448px;
+    }
+}
+</style>
