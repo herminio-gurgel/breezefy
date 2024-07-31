@@ -25,49 +25,59 @@ defineProps({
 <template>
     <Head title="Welcome"/>
     <v-app>
+
         <div class="d-flex justify-space-around" style="max-width: 100vw">
-            <v-app-bar>
-                <v-app-bar-title>
-                    <Link :href="route('dashboard')">
-                        <ApplicationLogo class="d-flex" style="height: 36px;"/>
-                    </Link>
-                </v-app-bar-title>
-                <v-spacer/>
 
-                <nav v-if="canLogin">
-                    <Link
-                        v-if="$page.props.auth.user"
-                        as="button"
-                        :href="route('dashboard')"
-                        class="px-3 py-2"
-                    >
-                        Dashboard
-                    </Link>
+            <v-app-bar density="prominent">
+                <v-row no-gutters class="my-auto">
+                    <v-col cols="0" md="5" />
+                    <v-col cols="2" md="2">
+                        <v-app-bar-title>
+                            <Link :href="route('dashboard')">
+                                <ApplicationLogo class="mx-auto d-flex" style="height: 70px;"/>
+                            </Link>
+                        </v-app-bar-title>
+                    </v-col>
 
-                    <template v-else>
-                        <Link
-                            as="button"
-                            :href="route('login')"
-                        >
-                            <v-btn class="text-capitalize">Login</v-btn>
-                        </Link>
+                    <v-col cols="10" md="5" align-self="center">
+                        <nav class="d-flex justify-end" v-if="canLogin">
+                            <Link
+                                v-if="$page.props.auth.user"
+                                as="button"
+                                :href="route('dashboard')"
+                                class="px-3 py-2"
+                            >
+                                Dashboard
+                            </Link>
 
-                        <Link
-                            as="button"
-                            :href="route('register')"
-                        >
-                            <v-btn class="text-capitalize">Register</v-btn>
-                        </Link>
-                    </template>
-                </nav>
+                            <template v-else>
+                                <Link
+                                    as="button"
+                                    :href="route('login')"
+                                >
+                                    <v-btn class="text-capitalize">Login</v-btn>
+                                </Link>
 
+                                <Link
+                                    as="button"
+                                    :href="route('register')"
+                                >
+                                    <v-btn class="text-capitalize">Register</v-btn>
+                                </Link>
+                            </template>
+                        </nav>
+                    </v-col>
+                </v-row>
             </v-app-bar>
+
         </div>
-            <v-main class="d-flex align-center justify-center h-75">
-                Main Content
-            </v-main>
-            <v-footer>
-                <p class="w-100 text-center">Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})</p>
-            </v-footer>
+
+        <v-main class="d-flex align-center justify-center" style="min-height: 500px">
+            Main Content
+        </v-main>
+
+        <v-footer>
+            <p class="w-100 text-center">Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})</p>
+        </v-footer>
     </v-app>
 </template>
