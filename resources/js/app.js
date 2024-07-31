@@ -15,6 +15,11 @@ const vuetify = createVuetify({
     components,
     directives,
     defaults: {
+        VAppBar:{
+            flat: true,
+            class: 'px-sm-6 position-static',
+            style: 'max-width: 80rem'
+        },
         VTextField: {
             variant: 'outlined',
             density: 'compact',

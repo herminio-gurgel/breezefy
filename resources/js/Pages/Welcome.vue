@@ -1,5 +1,7 @@
 <script setup>
 import {Head, Link} from '@inertiajs/vue3';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+
 
 defineProps({
     canLogin: {
@@ -24,8 +26,12 @@ defineProps({
     <Head title="Welcome"/>
     <v-app>
         <div class="d-flex justify-space-around" style="max-width: 100vw">
-            <v-app-bar flat class="px-sm-6 position-static" style="max-width: 80rem">
-                <v-app-bar-title>Breezefy</v-app-bar-title>
+            <v-app-bar>
+                <v-app-bar-title>
+                    <Link :href="route('dashboard')">
+                        <ApplicationLogo class="d-flex" style="height: 36px;"/>
+                    </Link>
+                </v-app-bar-title>
                 <v-spacer/>
 
                 <nav v-if="canLogin">

@@ -12,9 +12,9 @@ const drawer = ref(false)
 <template>
     <v-app>
         <div class="d-flex justify-space-around" style="max-width: 100vw">
-            <v-app-bar flat class="px-sm-6 position-static" style="max-width: 80rem">
+            <v-app-bar>
 
-                <v-app-bar-title class="bar-title" style="flex: none">
+                <v-app-bar-title style="flex: none">
                     <Link :href="route('dashboard')">
                         <ApplicationLogo class="d-flex" style="height: 36px;"/>
                     </Link>
