@@ -53,7 +53,7 @@ defineProps({
                                     as="button"
                                     :href="route('login')"
                                 >
-                                    <v-btn class="text-capitalize">Login</v-btn>
+                                    <v-btn class="text-capitalize">Log In</v-btn>
                                 </Link>
 
                                 <Link
