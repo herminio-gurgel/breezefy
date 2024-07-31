@@ -34,19 +34,26 @@ const submit = () => {
         <v-form @keydown.enter.prevent="submit" @submit.prevent="submit">
 
             <v-text-field
-                v-model="form.email"
                 label="Email"
+                id="email"
+                type="email"
+                v-model="form.email"
+                autofocus
                 :error-messages="form.errors.email"
+                autocomplete="username"
             />
 
             <v-text-field
-                v-model="form.password"
                 label="Password"
-                :error-messages="form.errors.password"
+                id="password"
                 type="password"
+                v-model="form.password"
+                :error-messages="form.errors.password"
+                autocomplete="current-password"
             />
 
             <v-checkbox
+                name="remember"
                 label="Remember me"
                 hide-details
                 v-model="form.remember"
