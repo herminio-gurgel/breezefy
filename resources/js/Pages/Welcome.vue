@@ -33,9 +33,7 @@ defineProps({
                     <v-col cols="0" md="5" />
                     <v-col cols="2" md="2">
                         <v-app-bar-title>
-                            <Link :href="route('dashboard')">
                                 <ApplicationLogo class="mx-auto d-flex" style="height: 70px;"/>
-                            </Link>
                         </v-app-bar-title>
                     </v-col>
 
