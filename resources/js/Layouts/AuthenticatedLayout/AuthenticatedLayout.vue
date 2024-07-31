@@ -2,15 +2,11 @@
 import {ref} from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import {Link} from '@inertiajs/vue3';
+import MenuLinks from "@/Layouts/AuthenticatedLayout/Partials/MenuLinks.vue";
 
 const navigationLinks = ref([
     {title: 'Dashboard', namedRoute: 'dashboard'},
 ]);
-
-const menuLinks = ref([
-    {title: 'Profile', namedRoute: 'profile.edit'},
-    {title: 'Log Out', namedRoute: 'logout', method: 'post'}
-])
 
 const drawer = ref(false)
 
@@ -53,25 +49,11 @@ const drawer = ref(false)
                         />
                     </template>
 
-                    <v-list class="d-flex flex-column align-stretch" nav>
-                        <Link
-                            v-for="menuLink in menuLinks"
-                            :key="menuLink.title"
-                            :href="route(menuLink.namedRoute)"
-                            class="text-left"
-                            as="button"
-                            :method="menuLink.method"
-                        >
-                            <v-hover>
-                                <template v-slot:default="{isHovering, props}">
-                                    <v-list-item
-                                        v-bind="props"
-                                        :title="menuLink.title"
-                                        :class="isHovering ? 'bg-grey-lighten-4' : undefined"
-                                    />
-                                </template>
-                            </v-hover>
-                        </Link>
+                    <v-list
+                        class="d-flex flex-column align-stretch"
+                        nav
+                    >
+                        <MenuLinks/>
                     </v-list>
                 </v-menu>
 
@@ -105,16 +87,16 @@ const drawer = ref(false)
                 nav
             >
                 <Link
-                    v-for="link in navigationLinks"
-                    :key="link.title"
-                    :href="route(link.namedRoute)"
+                    v-for="navigationLink in navigationLinks"
+                    :key="navigationLink.title"
+                    :href="route(navigationLink.namedRoute)"
                     as="button"
                 >
                     <v-list-item
-                        :active="route().current(link.namedRoute)"
+                        :active="route().current(navigationLink.namedRoute)"
                         active-class="text-indigo"
                         class="text-left"
-                        :title="link.title"
+                        :title="navigationLink.title"
                     />
                 </Link>
 
@@ -124,24 +106,7 @@ const drawer = ref(false)
                     :title="$page.props.auth.user.name"
                     :subtitle="$page.props.auth.user.email"
                 />
-                <Link
-                    v-for="menuLink in menuLinks"
-                    :key="menuLink.title"
-                    :href="route(menuLink.namedRoute)"
-                    class="text-left"
-                    as="button"
-                    :method="menuLink.method"
-                >
-                    <v-hover>
-                        <template v-slot:default="{isHovering, props}">
-                            <v-list-item
-                                v-bind="props"
-                                :title="menuLink.title"
-                                :class="isHovering ? 'bg-grey-lighten-4' : undefined"
-                            />
-                        </template>
-                    </v-hover>
-                </Link>
+                <MenuLinks/>
             </v-list>
         </v-navigation-drawer>
 
