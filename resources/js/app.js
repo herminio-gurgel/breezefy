@@ -14,6 +14,13 @@ import * as directives from 'vuetify/directives'
 const vuetify = createVuetify({
     components,
     directives,
+    defaults: {
+        VTextField: {
+            variant: 'outlined',
+            density: 'compact',
+            class: 'mt-4'
+        }
+    }
 })
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
