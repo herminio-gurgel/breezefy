@@ -3,10 +3,7 @@ import {ref} from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import {Link} from '@inertiajs/vue3';
 import MenuLinks from "@/Layouts/AuthenticatedLayout/Partials/MenuLinks.vue";
-
-const navigationLinks = ref([
-    {title: 'Dashboard', namedRoute: 'dashboard'},
-]);
+import NavigationLinks from "@/Layouts/AuthenticatedLayout/Partials/NavigationLinks.vue";
 
 const drawer = ref(false)
 
@@ -24,17 +21,7 @@ const drawer = ref(false)
                 </v-app-bar-title>
 
                 <v-list nav class="d-none d-sm-flex ml-6">
-                    <Link
-                        v-for="navigatioLink in navigationLinks"
-                        :key="navigatioLink.title"
-                        :href="route(navigatioLink.namedRoute)"
-                        as="button"
-                    >
-                        <v-list-item
-                            :active="route().current(navigatioLink.namedRoute)"
-                            :title="navigatioLink.title"
-                        />
-                    </Link>
+                    <NavigationLinks/>
                 </v-list>
 
                 <v-spacer/>
@@ -86,19 +73,7 @@ const drawer = ref(false)
                 class="d-flex flex-column align-stretch"
                 nav
             >
-                <Link
-                    v-for="navigationLink in navigationLinks"
-                    :key="navigationLink.title"
-                    :href="route(navigationLink.namedRoute)"
-                    as="button"
-                >
-                    <v-list-item
-                        :active="route().current(navigationLink.namedRoute)"
-                        active-class="text-indigo"
-                        class="text-left"
-                        :title="navigationLink.title"
-                    />
-                </Link>
+                <NavigationLinks responsive />
 
                 <v-divider class="my-4"/>
 
