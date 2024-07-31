@@ -31,7 +31,7 @@ const submit = () => {
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
-        <v-form @submit.prevent="submit">
+        <v-form @keydown.enter.prevent="submit" @submit.prevent="submit">
 
             <v-text-field
                 v-model="form.email"
@@ -57,6 +57,7 @@ const submit = () => {
                     v-if="canResetPassword"
                     :href="route('password.request')"
                     as="button"
+                    class="text-body-2 text-decoration-underline"
                 >
                     Forgot your password?
                 </Link>
