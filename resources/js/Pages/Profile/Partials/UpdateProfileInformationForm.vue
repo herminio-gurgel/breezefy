@@ -72,7 +72,6 @@ const form = useForm({
 
                 <v-snackbar
                     v-model="form.recentlySuccessful"
-                    :timeout="2000"
                 >
                     <p class="text-body-2 text-center">Saved.</p>
                 </v-snackbar>
