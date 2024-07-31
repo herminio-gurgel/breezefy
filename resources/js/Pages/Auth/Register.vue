@@ -19,7 +19,7 @@ const submit = () => {
 <template>
     <GuestLayout>
         <Head title="Register"/>
-        <v-form @submit.prevent="submit">
+        <v-form  @keydown.enter.prevent="submit" @submit.prevent="submit">
             <v-text-field
                 v-model="form.name"
                 label="Name"
@@ -52,6 +52,8 @@ const submit = () => {
                 <Link
                     :href="route('login')"
                     as="button"
+                    class="text-body-2 text-decoration-underline"
+
                 >
                     Already registered?
                 </Link>
