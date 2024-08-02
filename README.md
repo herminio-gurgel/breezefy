@@ -5,7 +5,7 @@ Breezefy is a starter kit based on Laravel Breeze, Inertia.js, and Vue.js, but w
 ## Key Features
 
 - **Laravel Breeze**: Simple and robust authentication implementation.
-- **Inertia.js**: Framework that allows building single-page applications (SPAs) using traditional backend frameworks.
+- **Inertia.js**: Adapter that allows building single-page applications (SPAs) using traditional backend frameworks.
 - **Vue.js**: Progressive JavaScript framework for building user interfaces.
 - **Vuetify**: Vue.js component library based on Material Design, replacing Tailwind CSS.
 
@@ -23,7 +23,7 @@ Follow these steps to install and set up the project using Laravel Sail:
 1. **Clone the repository**:
 
     ```bash
-    git clone https://github.com/yourusername/breezefy.git
+    git clone https://github.com/herminio-gurgel/breezefy.git
     ```
 
 2. **Navigate to the project directory**:
@@ -32,53 +32,49 @@ Follow these steps to install and set up the project using Laravel Sail:
     cd breezefy
     ```
 
-3. **Install PHP dependencies**:
-
-    ```bash
-    composer install
-    ```
-
-4. **Install Node.js dependencies**:
-
-    ```bash
-    npm install
-    ```
-
-5. **Build frontend assets**:
-
-    ```bash
-    npm run build
-    ```
-
-6. **Copy the `.env.example` file to `.env`**:
+3. **Copy the `.env.example` file to `.env`**:
 
     ```bash
     cp .env.example .env
     ```
 
-7. **Configure your environment variables in the `.env` file**:
-    - Set your database connection settings.
-    - Set any other necessary environment variables, including Mailpit settings.
+4. **Install PHP dependencies**:
 
-8. **Start the Laravel Sail environment**:
+    ```bash
+    composer install
+    ```
+
+5. **Start the Laravel Sail environment**:
 
     ```bash
     ./vendor/bin/sail up -d
     ```
 
-9. **Generate the application key**:
+6. **Install Node.js dependencies**:
+
+    ```bash
+    ./vendor/bin/sail npm install
+    ```
+
+7. **Build frontend assets**:
+
+    ```bash
+    ./vendor/bin/sail npm run build
+    ```
+
+8. **Generate the application key**:
 
     ```bash
     ./vendor/bin/sail artisan key:generate
     ```
 
-10. **Run database migrations**:
+9. **Run database migrations**:
 
     ```bash
     ./vendor/bin/sail artisan migrate
     ```
 
-11. **Access the application**:
+10. **Access the application**:
 
     After running these commands, you should be able to access the application at `http://localhost`.
 
