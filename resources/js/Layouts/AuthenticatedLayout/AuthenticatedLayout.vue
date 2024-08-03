@@ -11,9 +11,9 @@ const drawer = ref(false)
 
 <template>
     <v-app>
-        <div class="d-flex justify-space-around" style="max-width: 100vw">
-            <v-app-bar>
 
+        <v-app-bar>
+            <v-row>
                 <v-app-bar-title style="flex: none">
                     <Link :href="route('dashboard')">
                         <ApplicationLogo class="d-flex" style="height: 36px;"/>
@@ -44,27 +44,28 @@ const drawer = ref(false)
                     </v-list>
                 </v-menu>
 
-                <template v-slot:append>
-                    <v-app-bar-nav-icon
-                        class="d-sm-none text-grey-darken-1"
-                        @click.stop="drawer = !drawer"
-                        :icon="drawer ? 'mdi-close' : 'mdi-menu'"
-                    />
-                </template>
-                <template v-slot:extension>
-                    <div class="px-6 border-t-sm w-100" v-if="$slots.header">
+                <v-app-bar-nav-icon
+                    class="d-sm-none text-grey-darken-1"
+                    @click.stop="drawer = !drawer"
+                    :icon="drawer ? 'mdi-close' : 'mdi-menu'"
+                />
+            </v-row>
+
+            <template v-slot:extension>
+                <v-row>
+                    <div class="border-t-sm w-100" v-if="$slots.header">
                         <div class="d-flex align-center" style="height: 48px">
                             <slot name="header"/>
                         </div>
                     </div>
-                </template>
+                </v-row>
+            </template>
 
-            </v-app-bar>
-        </div>
+        </v-app-bar>
 
         <v-navigation-drawer
             absolute
-            class="d-sm-none "
+            class="d-sm-none"
             v-model="drawer"
             disable-resize-watcher
             location="top"
@@ -73,7 +74,7 @@ const drawer = ref(false)
                 class="d-flex flex-column align-stretch"
                 nav
             >
-                <NavigationLinks responsive />
+                <NavigationLinks responsive/>
 
                 <v-divider class="my-4"/>
 
@@ -85,12 +86,8 @@ const drawer = ref(false)
             </v-list>
         </v-navigation-drawer>
 
-        <v-main class="bg-grey-lighten-4 pt-0">
-            <v-container class="px-0 px-md-6 mt-4" style="max-width: 80rem">
-                <div class="bg-white overflow-hidden elevation-1 rounded-lg pa-6 text-grey-darken-4">
-                    <slot/>
-                </div>
-            </v-container>
+        <v-main>
+            <slot />
         </v-main>
 
     </v-app>
