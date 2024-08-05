@@ -33,13 +33,13 @@ defineProps({
                 <v-app-bar density="prominent" class="bg-transparent">
                     <v-row>
                         <v-col cols="0" md="5"/>
-                        <v-col cols="2" md="2">
+                        <v-col cols="3" md="2">
                             <v-app-bar-title>
                                 <ApplicationLogo class="mx-auto d-flex" style="height: 70px;"/>
                             </v-app-bar-title>
                         </v-col>
 
-                        <v-col cols="10" md="5" align-self="center">
+                        <v-col cols="9" md="5">
                             <nav class="d-flex justify-end" v-if="canLogin">
                                 <Link
                                     v-if="$page.props.auth.user"
@@ -76,7 +76,7 @@ defineProps({
                 Main Content
             </v-main>
 
-            <v-footer class="mx-auto bg-transparent" height="150px" style="width: 80rem">
+            <v-footer class="bg-transparent" height="150px">
                     <p class="w-100 text-center text-body-2">
                         Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
                     </p>

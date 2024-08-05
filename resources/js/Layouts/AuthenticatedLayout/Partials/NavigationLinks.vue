@@ -11,7 +11,7 @@ defineProps({
 })
 
 const navigationLinks = ref([
-    {title: 'Dashboard', namedRoute: 'dashboard'},
+    {title: 'Dashboard', namedRoute: 'dashboard', method: ''},
 ]);
 </script>
 

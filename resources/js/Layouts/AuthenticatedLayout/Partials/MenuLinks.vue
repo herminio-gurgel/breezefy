@@ -3,7 +3,7 @@ import {Link} from '@inertiajs/vue3';
 import {ref} from "vue";
 
 const menuLinks = ref([
-    {title: 'Profile', namedRoute: 'profile.edit'},
+    {title: 'Profile', namedRoute: 'profile.edit', method: ''},
     {title: 'Log Out', namedRoute: 'logout', method: 'post'}
 ])
 </script>
