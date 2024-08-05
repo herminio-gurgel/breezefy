@@ -1,6 +1,20 @@
 # Breezefy
 
-Breezefy is a starter kit based on Laravel Breeze, Inertia.js, and Vue.js, but with a significant difference: all components have been refactored to use Vuetify instead of Tailwind CSS. This project provides a solid foundation for quickly starting modern web applications with a well-defined structure and powerful styling.
+![License](https://img.shields.io/github/license/herminio-gurgel/breezefy)
+![Version](https://img.shields.io/github/v/release/herminio-gurgel/breezefy)
+![Responsive Design](https://img.shields.io/badge/Responsive-yes-brightgreen)
+![Docker Ready](https://img.shields.io/badge/Docker-ready-brightgreen)
+
+
+Breezefy is a starter kit based on Laravel Breeze, Inertia.js, and Vue.js, but with a significant difference: all
+components have been refactored to use Vuetify instead of Tailwind CSS. This project provides a solid foundation for
+quickly starting modern web applications with a well-defined structure and powerful styling.
+
+The application is fully responsive, leveraging Vuetify's breakpoints based on the Material Design specification, to
+support both small screens (up to `sm` breakpoint) and larger screens (all breakpoints above `sm`).
+
+Additionally, it comes with a pre-configured `docker-compose` file via Laravel Sail, adding services such as MySQL for
+storage and Mailpit for testing email sending.
 
 ## Key Features
 
@@ -8,6 +22,10 @@ Breezefy is a starter kit based on Laravel Breeze, Inertia.js, and Vue.js, but w
 - **Inertia.js**: Adapter that allows building single-page applications (SPAs) using traditional backend frameworks.
 - **Vue.js**: Progressive JavaScript framework for building user interfaces.
 - **Vuetify**: Vue.js component library based on Material Design, replacing Tailwind CSS.
+- **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
+  Design specification, to support both small screens (up to `sm` breakpoint) and larger screens (all breakpoints
+  above `sm`).
+- **Pre-configured Docker Compose**: Includes MySQL for storage and Mailpit for testing email sending.
 
 ## Prerequisites
 
@@ -78,13 +96,80 @@ Follow these steps to install and set up the project using Laravel Sail:
 
     After running these commands, you should be able to access the application at `http://localhost`.
 
+    - **Mailpit**: You can access Mailpit at `http://localhost:8025`.
+    - **Database**: You can connect to the MySQL database at `localhost:3306`.
+
+### Customization
+
+To start customizing the project, follow these guidelines:
+
+#### Application Links
+
+The application's main navigation is defined in two files located
+in `resources/js/Layouts/AuthenticatedLayout/Partials/`.
+
+The `NavigationLinks.vue` file stores links for navigating through the application bar. You can add, remove, or modify these
+navigation links to suit your needs:
+
+```javascript
+const navigationLinks = ref([
+    {title: 'Dashboard', namedRoute: 'dashboard', method: ''},
+    {title: 'Your Route', namedRoute: 'route-name', method: ''}
+]);
+```
+
+The `MenuLinks.vue` file stores links for the dropdown menu, which is typically used for user configuration and actions.
+You can customize these links as needed:
+
+```javascript
+const navigationLinks = ref([
+    {title: 'Profile', namedRoute: 'profile.edit', method: ''},
+    {title: 'Preferences', namedRoute: 'preference.index', method: ''},
+    {title: 'Log Out', namedRoute: 'logout', method: 'post'}
+]);
+```
+
+#### Vuetify Global Configuration
+
+The global configuration for Vuetify includes important customization options to maintain the consistent layout of the
+project. These settings can be adjusted in `resources/js/app.js` to better meet the needs of your project. For example,
+the maximum width of the application is controlled by a single variable width `80rem`, making it easy to adjust:
+
+```javascript
+const maxWidth = '80rem'
+
+const vuetify = createVuetify({
+        ...,
+        VAppBar: {
+            ...,
+            VRow: {
+                ...,
+                style: `max-width: ${maxWidth}`,
+            }
+        },
+        VMain: {
+            ...,
+            maxWidth: maxWidth,
+        },
+        VFooter: {
+            ...,
+            style: `max-width: ${maxWidth}`
+        },
+        ...,
+    })
+;
+```
+
+By following these steps, you can start customizing Breezefy to better fit your specific requirements and build your application on top of this robust starter kit.
+
 ## Contributing
 
 We welcome contributions to Breezefy! To make the process as smooth as possible, please follow these guidelines:
 
 ### Reporting Issues
 
-If you encounter any issues or bugs, please report them by opening a new issue on the GitHub repository. Provide as much detail as possible, including:
+If you encounter any issues or bugs, please report them by opening a new issue on the GitHub repository. Provide as much
+detail as possible, including:
 
 - A clear description of the problem
 - Steps to reproduce the issue
