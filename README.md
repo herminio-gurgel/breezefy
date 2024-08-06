@@ -5,7 +5,6 @@
 ![Responsive Design](https://img.shields.io/badge/Responsive-yes-brightgreen)
 ![Docker Ready](https://img.shields.io/badge/Docker-ready-brightgreen)
 
-
 Breezefy is a starter kit based on Laravel Breeze, Inertia.js, and Vue.js, but with a significant difference: all
 components have been refactored to use Vuetify instead of Tailwind CSS. This project provides a solid foundation for
 quickly starting modern web applications with a well-defined structure and powerful styling.
@@ -18,21 +17,21 @@ storage and Mailpit for testing email sending.
 
 ## Key Features
 
-- **Laravel Breeze**: Simple and robust authentication implementation.
-- **Inertia.js**: Adapter that allows building single-page applications (SPAs) using traditional backend frameworks.
-- **Vue.js**: Progressive JavaScript framework for building user interfaces.
-- **Vuetify**: Vue.js component library based on Material Design, replacing Tailwind CSS.
-- **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
-  Design specification, to support both small screens (up to `sm` breakpoint) and larger screens (all breakpoints
-  above `sm`).
-- **Pre-configured Docker Compose**: Includes MySQL for storage and Mailpit for testing email sending.
+-   **Laravel Breeze**: Simple and robust authentication implementation.
+-   **Inertia.js**: Adapter that allows building single-page applications (SPAs) using traditional backend frameworks.
+-   **Vue.js**: Progressive JavaScript framework for building user interfaces.
+-   **Vuetify**: Vue.js component library based on Material Design, replacing Tailwind CSS.
+-   **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
+    Design specification, to support both small screens (up to `sm` breakpoint) and larger screens (all breakpoints
+    above `sm`).
+-   **Pre-configured Docker Compose**: Includes MySQL for storage and Mailpit for testing email sending.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
-- **Docker**: To run Laravel Sail (https://www.docker.com/)
-- **Docker Compose**: Comes with Docker Desktop
+-   **Docker**: To run Laravel Sail (https://www.docker.com/)
+-   **Docker Compose**: Comes with Docker Desktop
 
 ## Installation
 
@@ -113,8 +112,8 @@ navigation links to suit your needs:
 
 ```javascript
 const navigationLinks = ref([
-    {title: 'Dashboard', namedRoute: 'dashboard', method: ''},
-    {title: 'Your Route', namedRoute: 'route-name', method: ''}
+    { title: "Dashboard", namedRoute: "dashboard", method: "" },
+    { title: "Your Route", namedRoute: "route-name", method: "" },
 ]);
 ```
 
@@ -123,9 +122,9 @@ You can customize these links as needed:
 
 ```javascript
 const navigationLinks = ref([
-    {title: 'Profile', namedRoute: 'profile.edit', method: ''},
-    {title: 'Preferences', namedRoute: 'preference.index', method: ''},
-    {title: 'Log Out', namedRoute: 'logout', method: 'post'}
+    { title: "Profile", namedRoute: "profile.edit", method: "" },
+    { title: "Preferences", namedRoute: "preference.index", method: "" },
+    { title: "Log Out", namedRoute: "logout", method: "post" },
 ]);
 ```
 
@@ -171,9 +170,9 @@ We welcome contributions to Breezefy! To make the process as smooth as possible,
 If you encounter any issues or bugs, please report them by opening a new issue on the GitHub repository. Provide as much
 detail as possible, including:
 
-- A clear description of the problem
-- Steps to reproduce the issue
-- Any relevant error messages or logs
+-   A clear description of the problem
+-   Steps to reproduce the issue
+-   Any relevant error messages or logs
 
 Thank you for contributing to Breezefy!
 
@@ -182,4 +181,3 @@ Thank you for contributing to Breezefy!
 Breezefy is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ### MIT License
-

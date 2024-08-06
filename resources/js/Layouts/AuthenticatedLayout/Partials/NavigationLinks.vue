@@ -1,17 +1,16 @@
 <script setup>
-import {Link} from '@inertiajs/vue3';
-import {ref} from "vue";
+import { Link } from "@inertiajs/vue3";
+import { ref } from "vue";
 
 defineProps({
     responsive: {
         type: Boolean,
-        default: false
+        default: false,
     },
-
-})
+});
 
 const navigationLinks = ref([
-    {title: 'Dashboard', namedRoute: 'dashboard', method: ''},
+    { title: "Dashboard", namedRoute: "dashboard", method: "" },
 ]);
 </script>
 
@@ -25,7 +24,7 @@ const navigationLinks = ref([
         <v-list-item
             :active="route().current(navigationLink.namedRoute)"
             :active-class="responsive ? 'text-indigo' : ''"
-            :class="{'text-left' : responsive}"
+            :class="{ 'text-left': responsive }"
             :title="navigationLink.title"
         />
     </Link>

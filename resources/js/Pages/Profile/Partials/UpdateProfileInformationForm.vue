@@ -1,6 +1,5 @@
 <script setup>
-
-import {Link, useForm, usePage} from '@inertiajs/vue3';
+import { Link, useForm, usePage } from "@inertiajs/vue3";
 
 defineProps({
     mustVerifyEmail: {
@@ -23,10 +22,15 @@ const form = useForm({
     <section>
         <header>
             <h2>Profile Information</h2>
-            <p class="mt-1 text-body-2">Update your account's profile information and email address.</p>
+            <p class="mt-1 text-body-2">
+                Update your account's profile information and email address.
+            </p>
         </header>
 
-        <v-form @submit.prevent="form.patch(route('profile.update'))" class="my-6">
+        <v-form
+            @submit.prevent="form.patch(route('profile.update'))"
+            class="my-6"
+        >
             <v-text-field
                 v-model="form.name"
                 max-width="576px"
@@ -70,9 +74,7 @@ const form = useForm({
                     text="save"
                 />
 
-                <v-snackbar
-                    v-model="form.recentlySuccessful"
-                >
+                <v-snackbar v-model="form.recentlySuccessful">
                     <p class="text-body-2 text-center">Saved.</p>
                 </v-snackbar>
             </div>

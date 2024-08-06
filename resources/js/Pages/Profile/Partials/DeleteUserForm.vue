@@ -1,12 +1,12 @@
 <script setup>
-import {useForm} from '@inertiajs/vue3';
-import {nextTick, ref} from 'vue';
+import { useForm } from "@inertiajs/vue3";
+import { nextTick, ref } from "vue";
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
 
 const form = useForm({
-    password: '',
+    password: "",
 });
 
 const confirmUserDeletion = () => {
@@ -16,7 +16,7 @@ const confirmUserDeletion = () => {
 };
 
 const deleteUser = () => {
-    form.delete(route('profile.destroy'), {
+    form.delete(route("profile.destroy"), {
         preserveScroll: true,
         onSuccess: () => closeModal(),
         onError: () => passwordInput.value.focus(),
@@ -37,13 +37,14 @@ const closeModal = () => {
             <h2>Delete Account</h2>
 
             <p style="max-width: 576px" class="mt-1 text-body-2">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting
-                your account, please download any data or information that you wish to retain.
+                Once your account is deleted, all of its resources and data will
+                be permanently deleted. Before deleting your account, please
+                download any data or information that you wish to retain.
             </p>
         </header>
 
         <v-dialog max-width="672px">
-            <template v-slot:activator="{props: activatorProps}">
+            <template v-slot:activator="{ props: activatorProps }">
                 <v-btn
                     v-bind="activatorProps"
                     color="error"
@@ -51,16 +52,17 @@ const closeModal = () => {
                     text="delete account"
                 />
             </template>
-            <template v-slot:default="{isActive}">
+            <template v-slot:default="{ isActive }">
                 <v-card>
                     <v-card-title class="font-weight-bold text-body-1 pl-6">
                         Are you sure you want to delete your account?
                     </v-card-title>
                     <v-card-text>
                         <p class="text-body-2">
-                            Once your account is deleted, all of its resources and data will be permanently deleted.
-                            Please
-                            enter your password to confirm you would like to permanently delete your account.
+                            Once your account is deleted, all of its resources
+                            and data will be permanently deleted. Please enter
+                            your password to confirm you would like to
+                            permanently delete your account.
                         </p>
                         <v-text-field
                             label="Password"
@@ -74,10 +76,7 @@ const closeModal = () => {
                         />
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn
-                            @click="isActive.value = false"
-                            text="close"
-                        />
+                        <v-btn @click="isActive.value = false" text="close" />
                         <v-btn
                             color="error"
                             :disabled="form.processing"
@@ -88,6 +87,5 @@ const closeModal = () => {
                 </v-card>
             </template>
         </v-dialog>
-
     </section>
 </template>

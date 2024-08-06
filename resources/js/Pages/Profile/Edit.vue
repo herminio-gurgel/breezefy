@@ -1,9 +1,9 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout/AuthenticatedLayout.vue';
-import DeleteUserForm from './Partials/DeleteUserForm.vue';
-import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
-import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
-import {Head} from '@inertiajs/vue3';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout/AuthenticatedLayout.vue";
+import DeleteUserForm from "./Partials/DeleteUserForm.vue";
+import UpdatePasswordForm from "./Partials/UpdatePasswordForm.vue";
+import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm.vue";
+import { Head } from "@inertiajs/vue3";
 
 defineProps({
     mustVerifyEmail: {
@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Profile"/>
+    <Head title="Profile" />
 
     <AuthenticatedLayout>
         <template #header>
@@ -27,11 +27,11 @@ defineProps({
             :status="status"
         />
 
-        <v-divider class="my-4"/>
+        <v-divider class="my-4" />
 
-        <UpdatePasswordForm/>
-        <v-divider class="my-4"/>
+        <UpdatePasswordForm />
+        <v-divider class="my-4" />
 
-        <DeleteUserForm/>
+        <DeleteUserForm />
     </AuthenticatedLayout>
 </template>

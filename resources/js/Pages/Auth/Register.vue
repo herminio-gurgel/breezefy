@@ -1,25 +1,25 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import {Head, Link, useForm} from '@inertiajs/vue3';
+import GuestLayout from "@/Layouts/GuestLayout.vue";
+import { Head, Link, useForm } from "@inertiajs/vue3";
 
 const form = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
+    name: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
 });
 
 const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
+    form.post(route("register"), {
+        onFinish: () => form.reset("password", "password_confirmation"),
     });
 };
 </script>
 
 <template>
     <GuestLayout>
-        <Head title="Register"/>
-        <v-form  @keydown.enter.prevent="submit" @submit.prevent="submit">
+        <Head title="Register" />
+        <v-form @keydown.enter.prevent="submit" @submit.prevent="submit">
             <v-text-field
                 v-model="form.name"
                 label="Name"
@@ -47,13 +47,11 @@ const submit = () => {
                 type="password"
             />
 
-
             <div class="d-flex align-center justify-end mt-4">
                 <Link
                     :href="route('login')"
                     as="button"
                     class="text-body-2 text-decoration-underline"
-
                 >
                     Already registered?
                 </Link>

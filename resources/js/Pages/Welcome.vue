@@ -1,7 +1,6 @@
 <script setup>
-import {Head, Link} from '@inertiajs/vue3';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-
+import { Head, Link } from "@inertiajs/vue3";
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 
 defineProps({
     canLogin: {
@@ -19,23 +18,23 @@ defineProps({
         required: true,
     },
 });
-
 </script>
 
 <template>
-    <Head title="Welcome"/>
+    <Head title="Welcome" />
 
     <v-app>
         <div class="my-auto px-4">
-
             <div class="d-flex justify-space-around">
-
                 <v-app-bar density="prominent" class="bg-transparent">
                     <v-row>
-                        <v-col cols="0" md="5"/>
+                        <v-col cols="0" md="5" />
                         <v-col cols="3" md="2">
                             <v-app-bar-title>
-                                <ApplicationLogo class="mx-auto d-flex" style="height: 70px;"/>
+                                <ApplicationLogo
+                                    class="mx-auto d-flex"
+                                    style="height: 70px"
+                                />
                             </v-app-bar-title>
                         </v-col>
 
@@ -51,38 +50,31 @@ defineProps({
                                 </Link>
 
                                 <template v-else>
-                                    <Link
-                                        as="button"
-                                        :href="route('login')"
-                                    >
-                                        <v-btn class="text-capitalize">Log In</v-btn>
+                                    <Link as="button" :href="route('login')">
+                                        <v-btn class="text-capitalize"
+                                            >Log In</v-btn
+                                        >
                                     </Link>
 
-                                    <Link
-                                        as="button"
-                                        :href="route('register')"
-                                    >
-                                        <v-btn class="text-capitalize">Register</v-btn>
+                                    <Link as="button" :href="route('register')">
+                                        <v-btn class="text-capitalize"
+                                            >Register</v-btn
+                                        >
                                     </Link>
                                 </template>
                             </nav>
                         </v-col>
                     </v-row>
                 </v-app-bar>
-
             </div>
 
-            <v-main height="750px">
-                Main Content
-            </v-main>
+            <v-main height="750px"> Main Content </v-main>
 
             <v-footer class="bg-transparent" height="150px">
-                    <p class="w-100 text-center text-body-2">
-                        Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
-                    </p>
+                <p class="w-100 text-center text-body-2">
+                    Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
+                </p>
             </v-footer>
-
         </div>
     </v-app>
-
 </template>
