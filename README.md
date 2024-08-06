@@ -5,37 +5,36 @@
 ![Responsive Design](https://img.shields.io/badge/Responsive-yes-brightgreen)
 ![Docker Ready](https://img.shields.io/badge/Docker-ready-brightgreen)
 
-Breezefy is a starter kit based on Laravel Breeze, Inertia.js, and Vue.js, but with a significant difference: all
-components have been refactored to use Vuetify instead of Tailwind CSS. This project provides a solid foundation for
-quickly starting modern web applications with a well-defined structure and powerful styling.
-
-The application is fully responsive, leveraging Vuetify's breakpoints based on the Material Design specification, to
-support both small screens (up to `sm` breakpoint) and larger screens (all breakpoints above `sm`).
-
-Additionally, it comes with a pre-configured `docker-compose` file via Laravel Sail, adding services such as MySQL for
-storage and Mailpit for testing email sending.
+Breezefy is a starter kit based on [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)
+, [Inertia.js](https://inertiajs.com/), and [Vue.js](https://vuejs.org/), with a significant difference: all components
+have been refactored to use [Vuetify](https://vuetifyjs.com/en/) instead of Tailwind CSS. This project provides a solid
+foundation for quickly starting modern web applications with a well-defined structure and powerful styling.
 
 ## Key Features
 
--   **Laravel Breeze**: Simple and robust authentication implementation.
--   **Inertia.js**: Adapter that allows building single-page applications (SPAs) using traditional backend frameworks.
--   **Vue.js**: Progressive JavaScript framework for building user interfaces.
--   **Vuetify**: Vue.js component library based on Material Design, replacing Tailwind CSS.
--   **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
-    Design specification, to support both small screens (up to `sm` breakpoint) and larger screens (all breakpoints
-    above `sm`).
--   **Pre-configured Docker Compose**: Includes MySQL for storage and Mailpit for testing email sending.
+- **[Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)**: Simple and robust authentication
+  implementation.
+- **[Inertia.js](https://inertiajs.com/)**: Adapter that allows building single-page applications (SPAs) using
+  traditional backend frameworks.
+- **[Vue.js](https://vuejs.org/)**: Progressive JavaScript framework for building user interfaces.
+- **[Vuetify](https://vuetifyjs.com/en/)**: Vue.js component library based on Material Design, replacing Tailwind CSS.
+- **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
+  Design specification, to support both small screens (up to `sm` breakpoint) and larger screens (all breakpoints
+  above `sm`).
+- **Pre-configured Docker Compose**: Includes [MySQL](https://www.mysql.com/) for storage and [Mailpit](https://mailpit.axllent.org/) for
+  testing email sending.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
--   **Docker**: To run Laravel Sail (https://www.docker.com/)
--   **Docker Compose**: Comes with Docker Desktop
+- **Docker**: To run Laravel Sail (https://www.docker.com/)
+- **Docker Compose**: Comes with Docker Desktop
 
 ## Installation
 
-Follow these steps to install and set up the project using Laravel Sail:
+Follow these steps to install and set up the project
+using [Laravel Sail](https://laravel.com/docs/11.x#docker-installation-using-sail):
 
 1. **Clone the repository**:
 
@@ -91,29 +90,41 @@ Follow these steps to install and set up the project using Laravel Sail:
     ./vendor/bin/sail artisan migrate
     ```
 
-10. **Access the application**:
+10. **Access the Application**
 
-    After running these commands, you should be able to access the application at `http://localhost`.
+After running these commands, you should be able to access the following:
 
-    - **Mailpit**: You can access Mailpit at `http://localhost:8025`.
-    - **Database**: You can connect to the MySQL database at `localhost:3306`.
+- **Application**: [http://localhost](http://localhost)
+- **Mailpit**: [http://localhost:8025](http://localhost:8025)
+- **MySQL**:
+    - **Using external clients**: You can connect to the MySQL database with the following default
+      credentials:
+        - **Host**: `localhost`
+        - **Port**: `3306`
+        - **Username**: `sail`
+        - **Password**: `password`
+    - **Using Laravel Sail**: To access the MySQL database directly, use the Sail command:
+      ```bash
+      ./vendor/bin/sail mysql
+      ```
 
-### Customization
+## Customization
 
-To start customizing the project, follow these guidelines:
+To customize the project, follow these guidelines:
 
-#### Application Links
+### Application Links
 
 The application's main navigation is defined in two files located
 in `resources/js/Layouts/AuthenticatedLayout/Partials/`.
 
-The `NavigationLinks.vue` file stores links for navigating through the application bar. You can add, remove, or modify these
+The `NavigationLinks.vue` file stores links for navigating through the application bar. You can add, remove, or modify
+these
 navigation links to suit your needs:
 
 ```javascript
 const navigationLinks = ref([
-    { title: "Dashboard", namedRoute: "dashboard", method: "" },
-    { title: "Your Route", namedRoute: "route-name", method: "" },
+    {title: "Dashboard", namedRoute: "dashboard", method: ""},
+    {title: "Your Route", namedRoute: "route-name", method: ""},
 ]);
 ```
 
@@ -122,13 +133,13 @@ You can customize these links as needed:
 
 ```javascript
 const navigationLinks = ref([
-    { title: "Profile", namedRoute: "profile.edit", method: "" },
-    { title: "Preferences", namedRoute: "preference.index", method: "" },
-    { title: "Log Out", namedRoute: "logout", method: "post" },
+    {title: "Profile", namedRoute: "profile.edit", method: ""},
+    {title: "Preferences", namedRoute: "preference.index", method: ""},
+    {title: "Log Out", namedRoute: "logout", method: "post"},
 ]);
 ```
 
-#### Vuetify Global Configuration
+### Vuetify Global Configuration
 
 The global configuration for Vuetify includes important customization options to maintain the consistent layout of the
 project. These settings can be adjusted in `resources/js/app.js` to better meet the needs of your project. For example,
@@ -159,7 +170,8 @@ const vuetify = createVuetify({
 ;
 ```
 
-By following these steps, you can start customizing Breezefy to better fit your specific requirements and build your application on top of this robust starter kit.
+By following these steps, you can start customizing Breezefy to better fit your specific requirements and build your
+application on top of this robust starter kit.
 
 ## Contributing
 
@@ -167,17 +179,14 @@ We welcome contributions to Breezefy! To make the process as smooth as possible,
 
 ### Reporting Issues
 
-If you encounter any issues or bugs, please report them by opening a new issue on the GitHub repository. Provide as much
-detail as possible, including:
+If you encounter any issues or bugs, please report them by opening a new issue on
+the [GitHub repository](https://github.com/herminio-gurgel/breezefy/issues). Provide as much detail as possible,
+including:
 
--   A clear description of the problem
--   Steps to reproduce the issue
--   Any relevant error messages or logs
-
-Thank you for contributing to Breezefy!
+- A clear description of the problem
+- Steps to reproduce the issue
+- Any relevant error messages or logs
 
 ## License
 
 Breezefy is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
-### MIT License
