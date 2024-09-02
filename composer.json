@@ -1,10 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "herminio-gurgel/breezefy",
+    "version": "1.1.0",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "A starter application for the Breezefy project using Laravel, Inertia, Vue.js and Vuetify.",
     "keywords": [
+        "breezefy",
         "laravel",
-        "framework"
+        "vue",
+        "vuetify",
+        "inertia"
     ],
     "license": "MIT",
     "require": {
