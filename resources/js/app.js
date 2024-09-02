@@ -1,5 +1,6 @@
 import "./bootstrap";
 import "@mdi/font/css/materialdesignicons.css";
+import "../css/main.scss";
 
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
@@ -9,8 +10,6 @@ import "vuetify/styles";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
-
-const maxWidth = "80rem";
 
 const vuetify = createVuetify({
     components,
@@ -25,18 +24,15 @@ const vuetify = createVuetify({
             style: "padding: 0 !important;",
             VRow: {
                 noGutters: true,
-                class: "mx-auto my-auto px-sm-0 px-6",
-                style: `max-width: ${maxWidth}`,
+                class: "width mx-auto my-auto",
                 align: "center",
             },
         },
         VMain: {
-            maxWidth: maxWidth,
-            class: "mx-auto pa-6 w-100 flex-grow-0 elevation-1 my-5 rounded-lg bg-white",
+            class: "width mx-auto w-100 pa-6 elevation-1 my-5 rounded-lg bg-white",
         },
         VFooter: {
-            class: "mx-auto",
-            style: `max-width: ${maxWidth}`,
+            class: "width mx-auto w-100 bg-transparent",
         },
         VTextField: {
             variant: "outlined",
