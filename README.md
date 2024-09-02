@@ -19,9 +19,10 @@ foundation for quickly starting modern web applications with a well-defined stru
 - **[Vue.js](https://vuejs.org/)**: Progressive JavaScript framework for building user interfaces.
 - **[Vuetify](https://vuetifyjs.com/en/)**: Vue.js component library based on Material Design, replacing Tailwind CSS.
 - **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
-  Design specification, to support both small screens (up to `sm` breakpoint) and larger screens (all breakpoints
-  above `sm`).
-- **Pre-configured Docker Compose**: Includes [MySQL](https://www.mysql.com/) for storage and [Mailpit](https://mailpit.axllent.org/) for
+  Design specification, to support small screens (`sm` breakpoint), medium screens (`md` breakpoint), and large
+  screens (`lg` breakpoint).
+- **Pre-configured Docker Compose**: Includes [MySQL](https://www.mysql.com/) for storage
+  and [Mailpit](https://mailpit.axllent.org/) for
   testing email sending.
 
 ## Prerequisites
@@ -57,7 +58,12 @@ using [Laravel Sail](https://laravel.com/docs/11.x#docker-installation-using-sai
 4. **Install PHP dependencies**:
 
     ```bash
-    composer install
+    docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install --ignore-platform-reqs
     ```
 
 5. **Start the Laravel Sail environment**:
@@ -132,7 +138,7 @@ The `MenuLinks.vue` file stores links for the dropdown menu, which is typically 
 You can customize these links as needed:
 
 ```javascript
-const navigationLinks = ref([
+const menuLinks = ref([
     {title: "Profile", namedRoute: "profile.edit", method: ""},
     {title: "Preferences", namedRoute: "preference.index", method: ""},
     {title: "Log Out", namedRoute: "logout", method: "post"},
@@ -141,37 +147,29 @@ const navigationLinks = ref([
 
 ### Vuetify Global Configuration
 
-The global configuration for Vuetify includes important customization options to maintain the consistent layout of the
-project. These settings can be adjusted in `resources/js/app.js` to better meet the needs of your project. For example,
-the maximum width of the application is controlled by a single variable width `80rem`, making it easy to adjust:
+The global configuration for Vuetify includes important customization options to maintain the consistent layout of the project. These settings can be adjusted in `resources/js/app.js` to better meet the needs of your project. Now, the maximum width of the application is controlled by a `.width` class defined in `resources/css/main.scss`, allowing for flexible width control across different viewports:
 
-```javascript
-const maxWidth = '80rem'
+```scss
+.width {
+    max-width: 450px !important;
 
-const vuetify = createVuetify({
-        ...,
-        VAppBar: {
-            ...,
-            VRow: {
-                ...,
-                style: `max-width: ${maxWidth}`,
-            }
-        },
-        VMain: {
-            ...,
-            maxWidth: maxWidth,
-        },
-        VFooter: {
-            ...,
-            style: `max-width: ${maxWidth}`
-        },
-        ...,
-    })
-;
+    @media screen and (min-width: 600px) and (max-width: 959px) {
+        max-width: 600px !important;
+    }
+
+    @media screen and (min-width: 960px) and (max-width: 1279px) {
+        max-width: 960px !important;
+    }
+
+    @media screen and (min-width: 1280px) {
+        max-width: 1280px !important;
+    }
+}
 ```
 
-By following these steps, you can start customizing Breezefy to better fit your specific requirements and build your
-application on top of this robust starter kit.
+To apply this new width control, the layout components have been updated to use the .width class instead of a fixed maxWidth variable. You can easily modify the .width class in the SCSS file to better suit your project's specific requirements.
+
+By following these steps, you can start customizing Breezefy to better fit your specific requirements and build your application on top of this robust starter kit.
 
 ## Contributing
 
