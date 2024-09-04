@@ -29,10 +29,10 @@ const vuetify = createVuetify({
             },
         },
         VMain: {
-            class: "width mx-auto w-100 pa-6 elevation-1 my-5 rounded-lg bg-white",
+            class: "width mx-auto w-100 pa-6 elevation-1 my-5 rounded-lg bg-white flex-grow-0",
         },
         VFooter: {
-            class: "width mx-auto w-100 bg-transparent",
+            class: "width mx-auto w-100 bg-transparent flex-grow-0",
         },
         VTextField: {
             variant: "outlined",
