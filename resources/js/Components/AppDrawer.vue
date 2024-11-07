@@ -10,16 +10,8 @@ import NavigationLinks from "@/Layouts/AuthenticatedLayout/Partials/NavigationLi
         disable-resize-watcher
         location="top"
     >
-        <v-list class="d-flex flex-column align-stretch" nav>
-            <NavigationLinks responsive />
-
-            <v-divider class="my-4" />
-
-            <v-list-item
-                :title="$page.props.auth.user.name"
-                :subtitle="$page.props.auth.user.email"
-            />
-            <MenuLinks />
-        </v-list>
+        <NavigationLinks responsive/>
+        <v-divider class="my-4"/>
+        <MenuLinks/>
     </v-navigation-drawer>
 </template>

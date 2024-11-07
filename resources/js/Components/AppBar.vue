@@ -23,9 +23,7 @@ function update() {
                     <ApplicationLogo class="d-flex" style="height: 36px"/>
                 </Link>
             </v-app-bar-title>
-            <v-list nav class="d-none d-sm-flex ml-6">
-                <NavigationLinks/>
-            </v-list>
+            <NavigationLinks/>
             <v-spacer/>
             <v-menu>
                 <template v-slot:activator="{ props }">
@@ -36,19 +34,14 @@ function update() {
                         :text="$page.props.auth.user.name"
                     />
                 </template>
-
-                <v-list class="d-flex flex-column align-stretch" nav>
-                    <MenuLinks/>
-                </v-list>
+                <MenuLinks/>
             </v-menu>
-
             <v-app-bar-nav-icon
                 class="d-sm-none text-grey-darken-1"
                 :icon="model ? 'mdi-close' : 'mdi-menu'"
                 @click.stop="update"
             />
         </v-row>
-
         <template v-slot:extension>
             <v-row>
                 <div class="border-t-sm w-100" v-if="$slots.header">

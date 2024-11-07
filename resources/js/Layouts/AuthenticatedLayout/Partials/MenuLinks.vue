@@ -9,22 +9,31 @@ const menuLinks = ref([
 </script>
 
 <template>
-    <Link
-        v-for="menuLink in menuLinks"
-        :key="menuLink.title"
-        :href="route(menuLink.namedRoute)"
-        class="text-left"
-        as="button"
-        :method="menuLink.method"
+    <v-list
+        class="d-flex flex-column align-stretch"
+        nav
     >
-        <v-hover>
-            <template v-slot:default="{ isHovering, props }">
-                <v-list-item
-                    v-bind="props"
-                    :title="menuLink.title"
-                    :class="isHovering ? 'bg-grey-lighten-4' : undefined"
-                />
-            </template>
-        </v-hover>
-    </Link>
+        <v-list-item
+            :title="$page.props.auth.user.name"
+            :subtitle="$page.props.auth.user.email"
+        />
+        <Link
+            v-for="menuLink in menuLinks"
+            :key="menuLink.title"
+            :href="route(menuLink.namedRoute)"
+            class="text-left"
+            as="button"
+            :method="menuLink.method"
+        >
+            <v-hover>
+                <template v-slot:default="{ isHovering, props }">
+                    <v-list-item
+                        v-bind="props"
+                        :title="menuLink.title"
+                        :class="isHovering ? 'bg-grey-lighten-4' : undefined"
+                    />
+                </template>
+            </v-hover>
+        </Link>
+    </v-list>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
-import { Link } from "@inertiajs/vue3";
-import { ref } from "vue";
+import {Link} from "@inertiajs/vue3";
+import {ref} from "vue";
 
 defineProps({
     responsive: {
@@ -10,22 +10,30 @@ defineProps({
 });
 
 const navigationLinks = ref([
-    { title: "Dashboard", namedRoute: "dashboard", method: "" },
+    {title: "Dashboard", namedRoute: "dashboard", method: ""},
 ]);
+const barClass = ref('d-none d-sm-flex ml-6')
+const drawerClass = ref('d-flex flex-column align-stretch')
 </script>
 
 <template>
-    <Link
-        v-for="navigationLink in navigationLinks"
-        :key="navigationLink.title"
-        :href="route(navigationLink.namedRoute)"
-        as="button"
+    <v-list
+        nav
+        :class="responsive ? drawerClass : barClass"
     >
-        <v-list-item
-            :active="route().current(navigationLink.namedRoute)"
-            :active-class="responsive ? 'text-indigo' : ''"
-            :class="{ 'text-left': responsive }"
-            :title="navigationLink.title"
-        />
-    </Link>
+        <Link
+            v-for="navigationLink in navigationLinks"
+            :key="navigationLink.title"
+            :href="route(navigationLink.namedRoute)"
+            as="button"
+        >
+            <v-list-item
+                :active="route().current(navigationLink.namedRoute)"
+                :active-class="responsive ? 'text-indigo' : ''"
+                :class="{ 'text-left': responsive }"
+                :title="navigationLink.title"
+            />
+        </Link>
+    </v-list>
+
 </template>
