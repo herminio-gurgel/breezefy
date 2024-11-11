@@ -1,6 +1,6 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
-import { nextTick, ref } from "vue";
+import { ref } from "vue";
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
@@ -8,12 +8,6 @@ const passwordInput = ref(null);
 const form = useForm({
     password: "",
 });
-
-const confirmUserDeletion = () => {
-    confirmingUserDeletion.value = true;
-
-    nextTick(() => passwordInput.value.focus());
-};
 
 const deleteUser = () => {
     form.delete(route("profile.destroy"), {
