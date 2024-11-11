@@ -1,17 +1,17 @@
 <script setup>
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import {Link} from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
 import NavigationLinks from "@/Layouts/AuthenticatedLayout/Partials/NavigationLinks.vue";
 import MenuLinks from "@/Layouts/AuthenticatedLayout/Partials/MenuLinks.vue";
 
 const model = defineModel({
     required: true,
     type: Boolean,
-    default: false
-})
+    default: false,
+});
 
 function update() {
-    model.value = !model.value
+    model.value = !model.value;
 }
 </script>
 
@@ -20,11 +20,11 @@ function update() {
         <v-row>
             <v-app-bar-title style="flex: none">
                 <Link :href="route('dashboard')">
-                    <ApplicationLogo class="d-flex" style="height: 36px"/>
+                    <ApplicationLogo class="d-flex" style="height: 36px" />
                 </Link>
             </v-app-bar-title>
-            <NavigationLinks/>
-            <v-spacer/>
+            <NavigationLinks />
+            <v-spacer />
             <v-menu>
                 <template v-slot:activator="{ props }">
                     <v-btn
@@ -34,7 +34,7 @@ function update() {
                         :text="$page.props.auth.user.name"
                     />
                 </template>
-                <MenuLinks/>
+                <MenuLinks />
             </v-menu>
             <v-app-bar-nav-icon
                 class="d-sm-none text-grey-darken-1"
@@ -46,7 +46,7 @@ function update() {
             <v-row>
                 <div class="border-t-sm w-100" v-if="$slots.header">
                     <div class="d-flex align-center" style="height: 48px">
-                        <slot name="header"/>
+                        <slot name="header" />
                     </div>
                 </div>
             </v-row>

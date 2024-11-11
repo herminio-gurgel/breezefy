@@ -10,8 +10,8 @@ import NavigationLinks from "@/Layouts/AuthenticatedLayout/Partials/NavigationLi
         disable-resize-watcher
         location="top"
     >
-        <NavigationLinks responsive/>
-        <v-divider class="my-4"/>
-        <MenuLinks/>
+        <NavigationLinks responsive />
+        <v-divider class="my-4" />
+        <MenuLinks />
     </v-navigation-drawer>
 </template>

@@ -9,11 +9,9 @@ const menuLinks = ref([
 </script>
 
 <template>
-    <v-list
-        class="d-flex flex-column align-stretch"
-        nav
-    >
+    <v-list class="d-flex flex-column align-stretch" nav>
         <v-list-item
+            class="d-md-none"
             :title="$page.props.auth.user.name"
             :subtitle="$page.props.auth.user.email"
         />
