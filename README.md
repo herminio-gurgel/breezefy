@@ -12,25 +12,28 @@ foundation for quickly starting modern web applications with a well-defined stru
 
 ## Key Features
 
-- **[Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)**: Simple and robust authentication
-  implementation.
-- **[Inertia.js](https://inertiajs.com/)**: Adapter that allows building single-page applications (SPAs) using
-  traditional backend frameworks.
-- **[Vue.js](https://vuejs.org/)**: Progressive JavaScript framework for building user interfaces.
-- **[Vuetify](https://vuetifyjs.com/en/)**: Vue.js component library based on Material Design, replacing Tailwind CSS.
-- **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
-  Design specification, to support small screens (`sm` breakpoint), medium screens (`md` breakpoint), and large
-  screens (`lg` breakpoint).
-- **Pre-configured Docker Compose**: Includes [MySQL](https://www.mysql.com/) for storage
-  and [Mailpit](https://mailpit.axllent.org/) for
-  testing email sending.
+-   **[Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)**: Simple and robust authentication
+    implementation.
+-   **[Inertia.js](https://inertiajs.com/)**: Adapter that allows building single-page applications (SPAs) using
+    traditional backend frameworks.
+-   **[Vue.js](https://vuejs.org/)**: Progressive JavaScript framework for building user interfaces.
+-   **[Vuetify](https://vuetifyjs.com/en/)**: Vue.js component library based on Material Design, replacing Tailwind CSS.
+-   **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
+    Design specification, to support small screens (`sm` breakpoint), medium screens (`md` breakpoint), and large
+    screens (`lg` breakpoint).
+-   **Pre-configured Docker Compose**: Includes [MySQL](https://www.mysql.com/) for storage
+    and [Mailpit](https://mailpit.axllent.org/) for
+    testing email sending.
+-   **Automated Code Quality Tools**: Configured with [ESLint](https://eslint.org/), [Prettier](https://prettier.io/)
+    , [Laravel Pint](https://laravel.com/docs/11.x/pint), and [Commitlint](https://commitlint.js.org/), all managed
+    by [Husky](https://typicode.github.io/husky/) to ensure code quality and commit message consistency.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
-- **Docker**: To run Laravel Sail (https://www.docker.com/)
-- **Docker Compose**: Comes with Docker Desktop
+-   **Docker**: To run Laravel Sail (https://www.docker.com/)
+-   **Docker Compose**: Comes with Docker Desktop
 
 ## Installation
 
@@ -100,19 +103,19 @@ using [Laravel Sail](https://laravel.com/docs/11.x#docker-installation-using-sai
 
 After running these commands, you should be able to access the following:
 
-- **Application**: [http://localhost](http://localhost)
-- **Mailpit**: [http://localhost:8025](http://localhost:8025)
-- **MySQL**:
-    - **Using external clients**: You can connect to the MySQL database with the following default
-      credentials:
-        - **Host**: `localhost`
-        - **Port**: `3306`
-        - **Username**: `sail`
-        - **Password**: `password`
-    - **Using Laravel Sail**: To access the MySQL database directly, use the Sail command:
-      ```bash
-      ./vendor/bin/sail mysql
-      ```
+-   **Application**: [http://localhost](http://localhost)
+-   **Mailpit**: [http://localhost:8025](http://localhost:8025)
+-   **MySQL**:
+    -   **Using external clients**: You can connect to the MySQL database with the following default
+        credentials:
+        -   **Host**: `localhost`
+        -   **Port**: `3306`
+        -   **Username**: `sail`
+        -   **Password**: `password`
+    -   **Using Laravel Sail**: To access the MySQL database directly, use the Sail command:
+        ```bash
+        ./vendor/bin/sail mysql
+        ```
 
 ## Customization
 
@@ -129,8 +132,8 @@ navigation links to suit your needs:
 
 ```javascript
 const navigationLinks = ref([
-    {title: "Dashboard", namedRoute: "dashboard", method: ""},
-    {title: "Your Route", namedRoute: "route-name", method: ""},
+    { title: "Dashboard", namedRoute: "dashboard", method: "" },
+    { title: "Your Route", namedRoute: "route-name", method: "" },
 ]);
 ```
 
@@ -139,37 +142,34 @@ You can customize these links as needed:
 
 ```javascript
 const menuLinks = ref([
-    {title: "Profile", namedRoute: "profile.edit", method: ""},
-    {title: "Preferences", namedRoute: "preference.index", method: ""},
-    {title: "Log Out", namedRoute: "logout", method: "post"},
+    { title: "Profile", namedRoute: "profile.edit", method: "" },
+    { title: "Preferences", namedRoute: "preference.index", method: "" },
+    { title: "Log Out", namedRoute: "logout", method: "post" },
 ]);
 ```
 
 ### Vuetify Global Configuration
 
-The global configuration for Vuetify includes important customization options to maintain the consistent layout of the project. These settings can be adjusted in `resources/js/app.js` to better meet the needs of your project. Now, the maximum width of the application is controlled by a `.width` class defined in `resources/css/main.scss`, allowing for flexible width control across different viewports:
+The global configuration for Vuetify includes essential customization options, such as props, classes, and styles
+defined in the createVuetify object. These settings maintain the project’s consistent layout and can be adjusted in
+`resources/js/app.js` to better align with your project’s needs.
 
-```scss
-.width {
-    max-width: 450px !important;
+Additionally, the application's maximum width is controlled by a `.breezefy-container-width` class defined in
+`resources/css/main.scss`. This class provides flexible width control across different viewports, with the configured
+classes being applied globally in Vuetify options.
 
-    @media screen and (min-width: 600px) and (max-width: 959px) {
-        max-width: 600px !important;
-    }
+### Code Quality Tools
 
-    @media screen and (min-width: 960px) and (max-width: 1279px) {
-        max-width: 960px !important;
-    }
+Automated tools are integrated for maintaining code quality, triggered by [Husky](https://typicode.github.io/husky/)
+pre-commit hooks. For more details, refer to the documentation of each tool:
 
-    @media screen and (min-width: 1280px) {
-        max-width: 1280px !important;
-    }
-}
-```
+-   [Laravel Pint](https://laravel.com/docs/11.x/pint)
+-   [Prettier](https://prettier.io/)
+-   [ESLint](https://eslint.org/)
+-   [Commitlint](https://commitlint.js.org/)
 
-To apply this new width control, the layout components have been updated to use the .width class instead of a fixed maxWidth variable. You can easily modify the .width class in the SCSS file to better suit your project's specific requirements.
-
-By following these steps, you can start customizing Breezefy to better fit your specific requirements and build your application on top of this robust starter kit.
+By following these guidelines, you can easily customize Breezefy to better suit your project requirements, building on
+top of this robust starter kit.
 
 ## Contributing
 
@@ -181,9 +181,9 @@ If you encounter any issues or bugs, please report them by opening a new issue o
 the [GitHub repository](https://github.com/herminio-gurgel/breezefy/issues). Provide as much detail as possible,
 including:
 
-- A clear description of the problem
-- Steps to reproduce the issue
-- Any relevant error messages or logs
+-   A clear description of the problem
+-   Steps to reproduce the issue
+-   Any relevant error messages or logs
 
 ## License
 
