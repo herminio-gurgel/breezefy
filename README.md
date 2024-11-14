@@ -12,28 +12,32 @@ foundation for quickly starting modern web applications with a well-defined stru
 
 ## Key Features
 
--   **[Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)**: Simple and robust authentication
-    implementation.
--   **[Inertia.js](https://inertiajs.com/)**: Adapter that allows building single-page applications (SPAs) using
-    traditional backend frameworks.
--   **[Vue.js](https://vuejs.org/)**: Progressive JavaScript framework for building user interfaces.
--   **[Vuetify](https://vuetifyjs.com/en/)**: Vue.js component library based on Material Design, replacing Tailwind CSS.
--   **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
-    Design specification, to support small screens (`sm` breakpoint), medium screens (`md` breakpoint), and large
-    screens (`lg` breakpoint).
--   **Pre-configured Docker Compose**: Includes [MySQL](https://www.mysql.com/) for storage
-    and [Mailpit](https://mailpit.axllent.org/) for
-    testing email sending.
--   **Automated Code Quality Tools**: Configured with [ESLint](https://eslint.org/), [Prettier](https://prettier.io/)
-    , [Laravel Pint](https://laravel.com/docs/11.x/pint), and [Commitlint](https://commitlint.js.org/), all managed
-    by [Husky](https://typicode.github.io/husky/) to ensure code quality and commit message consistency.
+- **[Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)**: Simple and robust authentication
+  implementation.
+- **[Inertia.js](https://inertiajs.com/)**: Adapter that allows building single-page applications (SPAs) using
+  traditional backend frameworks.
+- **[Vue.js](https://vuejs.org/)**: Progressive JavaScript framework for building user interfaces.
+- **[Vuetify](https://vuetifyjs.com/en/)**: Vue.js component library based on Material Design, replacing Tailwind CSS.
+- **Responsive Design**: The application is fully responsive, utilizing Vuetify's breakpoints based on the Material
+  Design specification, to support small screens (`sm` breakpoint), medium screens (`md` breakpoint), and large
+  screens (`lg` breakpoint).
+- **Pre-configured Docker Compose**: Includes [MySQL](https://www.mysql.com/) for storage
+  and [Mailpit](https://mailpit.axllent.org/) for
+  testing email sending.
+- **Automated Code Quality Tools**: Configured with [ESLint](https://eslint.org/), [Prettier](https://prettier.io/)
+  , [Laravel Pint](https://laravel.com/docs/11.x/pint), and [Commitlint](https://commitlint.js.org/), all managed
+  by [Husky](https://typicode.github.io/husky/) to ensure code quality and commit message consistency.
+- **Automatic Component and API Imports**:
+  Uses [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) to automatically import Vue
+  components and [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) to automatically import common
+  APIs from Vue, Vuetify, and Inertia.js, reducing the need for manual imports throughout the application.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
--   **Docker**: To run Laravel Sail (https://www.docker.com/)
--   **Docker Compose**: Comes with Docker Desktop
+- **Docker**: To run Laravel Sail (https://www.docker.com/)
+- **Docker Compose**: Comes with Docker Desktop
 
 ## Installation
 
@@ -103,19 +107,19 @@ using [Laravel Sail](https://laravel.com/docs/11.x#docker-installation-using-sai
 
 After running these commands, you should be able to access the following:
 
--   **Application**: [http://localhost](http://localhost)
--   **Mailpit**: [http://localhost:8025](http://localhost:8025)
--   **MySQL**:
-    -   **Using external clients**: You can connect to the MySQL database with the following default
-        credentials:
-        -   **Host**: `localhost`
-        -   **Port**: `3306`
-        -   **Username**: `sail`
-        -   **Password**: `password`
-    -   **Using Laravel Sail**: To access the MySQL database directly, use the Sail command:
-        ```bash
-        ./vendor/bin/sail mysql
-        ```
+- **Application**: [http://localhost](http://localhost)
+- **Mailpit**: [http://localhost:8025](http://localhost:8025)
+- **MySQL**:
+    - **Using external clients**: You can connect to the MySQL database with the following default
+      credentials:
+        - **Host**: `localhost`
+        - **Port**: `3306`
+        - **Username**: `sail`
+        - **Password**: `password`
+    - **Using Laravel Sail**: To access the MySQL database directly, use the Sail command:
+      ```bash
+      ./vendor/bin/sail mysql
+      ```
 
 ## Customization
 
@@ -132,8 +136,8 @@ navigation links to suit your needs:
 
 ```javascript
 const navigationLinks = ref([
-    { title: "Dashboard", namedRoute: "dashboard", method: "" },
-    { title: "Your Route", namedRoute: "route-name", method: "" },
+    {title: "Dashboard", namedRoute: "dashboard", method: ""},
+    {title: "Your Route", namedRoute: "route-name", method: ""},
 ]);
 ```
 
@@ -142,9 +146,9 @@ You can customize these links as needed:
 
 ```javascript
 const menuLinks = ref([
-    { title: "Profile", namedRoute: "profile.edit", method: "" },
-    { title: "Preferences", namedRoute: "preference.index", method: "" },
-    { title: "Log Out", namedRoute: "logout", method: "post" },
+    {title: "Profile", namedRoute: "profile.edit", method: ""},
+    {title: "Preferences", namedRoute: "preference.index", method: ""},
+    {title: "Log Out", namedRoute: "logout", method: "post"},
 ]);
 ```
 
@@ -163,10 +167,20 @@ classes being applied globally in Vuetify options.
 Automated tools are integrated for maintaining code quality, triggered by [Husky](https://typicode.github.io/husky/)
 pre-commit hooks. For more details, refer to the documentation of each tool:
 
--   [Laravel Pint](https://laravel.com/docs/11.x/pint)
--   [Prettier](https://prettier.io/)
--   [ESLint](https://eslint.org/)
--   [Commitlint](https://commitlint.js.org/)
+- [Laravel Pint](https://laravel.com/docs/11.x/pint)
+- [Prettier](https://prettier.io/)
+- [ESLint](https://eslint.org/)
+- [Commitlint](https://commitlint.js.org/)
+
+### Automatic Imports
+
+The project leverages automated component and API imports to simplify development. The following plugins are used to eliminate the need for manual imports:
+
+- **[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)**: Automatically imports Vue components, reducing the need to manually import components in every file.
+- **[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)**: Automatically imports common APIs from Vue, Vuetify, and Inertia.js, improving productivity by removing repetitive import statements.
+
+These plugins are integrated into the build process, streamlining development and making the codebase cleaner.
+
 
 By following these guidelines, you can easily customize Breezefy to better suit your project requirements, building on
 top of this robust starter kit.
@@ -181,9 +195,9 @@ If you encounter any issues or bugs, please report them by opening a new issue o
 the [GitHub repository](https://github.com/herminio-gurgel/breezefy/issues). Provide as much detail as possible,
 including:
 
--   A clear description of the problem
--   Steps to reproduce the issue
--   Any relevant error messages or logs
+- A clear description of the problem
+- Steps to reproduce the issue
+- Any relevant error messages or logs
 
 ## License
 
