@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
 import Components from "unplugin-vue-components/vite";
+import AutoImport from "unplugin-auto-import/vite";
 
 export default defineConfig({
     plugins: [
@@ -34,6 +35,29 @@ export default defineConfig({
                             path: "@inertiajs/vue3",
                         };
                     }
+                },
+            ],
+        }),
+        AutoImport({
+            eslintrc: {
+                enabled: true,
+            },
+            imports: [
+                "vue",
+                {
+                    "@inertiajs/vue3": ["router", "usePage", "useForm"],
+                },
+                {
+                    vuetify: [
+                        "useDate",
+                        "useDefaults",
+                        "useDisplay",
+                        "useGoTo",
+                        "useLayout",
+                        "useLocale",
+                        "useRtl",
+                        "useTheme",
+                    ],
                 },
             ],
         }),

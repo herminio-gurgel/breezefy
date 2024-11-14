@@ -2,3 +2,5 @@
 build
 coverage
 components.d.ts
+auto-imports.d.ts
+.eslintrc-auto-import.json
