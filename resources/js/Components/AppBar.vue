@@ -1,9 +1,4 @@
 <script setup>
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-import { Link } from "@inertiajs/vue3";
-import NavigationLinks from "@/Layouts/AuthenticatedLayout/Partials/NavigationLinks.vue";
-import MenuLinks from "@/Layouts/AuthenticatedLayout/Partials/MenuLinks.vue";
-
 const model = defineModel({
     required: true,
     type: Boolean,

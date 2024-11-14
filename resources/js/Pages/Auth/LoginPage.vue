@@ -1,6 +1,5 @@
 <script setup>
-import GuestLayout from "@/Layouts/GuestLayout.vue";
-import { Head, Link, useForm } from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 
 defineProps({
     canResetPassword: {

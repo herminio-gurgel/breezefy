@@ -1,5 +1,5 @@
 <script setup>
-import { Link, useForm, usePage } from "@inertiajs/vue3";
+import { useForm, usePage } from "@inertiajs/vue3";
 
 defineProps({
     mustVerifyEmail: {
