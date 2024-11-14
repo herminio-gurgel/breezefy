@@ -1,6 +1,4 @@
 <script setup>
-import { useForm, usePage } from "@inertiajs/vue3";
-
 defineProps({
     mustVerifyEmail: {
         type: Boolean,

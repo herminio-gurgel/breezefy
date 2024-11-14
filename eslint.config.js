@@ -1,3 +1,4 @@
+import fs from "fs";
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginVue from "eslint-plugin-vue";
@@ -10,6 +11,9 @@ export default [
             globals: {
                 ...globals.browser,
                 route: "readonly",
+                ...JSON.parse(
+                    fs.readFileSync("./.eslintrc-auto-import.json", "utf-8"),
+                ).globals,
             },
         },
     },

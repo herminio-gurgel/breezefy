@@ -1,7 +1,4 @@
 <script setup>
-import GuestLayout from "@/Layouts/GuestLayout.vue";
-import { Head, useForm } from "@inertiajs/vue3";
-
 defineProps({
     status: {
         type: String,

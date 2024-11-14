@@ -1,7 +1,4 @@
 <script setup>
-import { useForm } from "@inertiajs/vue3";
-import { ref } from "vue";
-
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
 

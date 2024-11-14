@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from "vue";
-
 const menuLinks = ref([
     { title: "Profile", namedRoute: "profile.edit", method: "" },
     { title: "Log Out", namedRoute: "logout", method: "post" },
