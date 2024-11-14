@@ -1,7 +1,5 @@
 <script setup>
 import { ref } from "vue";
-import AppBar from "@/Components/AppBar.vue";
-import AppDrawer from "@/Components/AppDrawer.vue";
 
 const drawer = ref(false);
 </script>

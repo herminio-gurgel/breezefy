@@ -1,8 +1,3 @@
-<script setup>
-import MenuLinks from "@/Layouts/AuthenticatedLayout/Partials/MenuLinks.vue";
-import NavigationLinks from "@/Layouts/AuthenticatedLayout/Partials/NavigationLinks.vue";
-</script>
-
 <template>
     <v-navigation-drawer
         absolute
