@@ -12,10 +12,6 @@ defineProps({
 <template>
     <Head title="Profile" />
 
-    <AuthenticatedLayout>
-        <template #header>
-            <h2>Profile</h2>
-        </template>
         <UpdateProfileInformationForm
             :must-verify-email="mustVerifyEmail"
             :status="status"
@@ -27,5 +23,4 @@ defineProps({
         <v-divider class="my-4 mx-n6" thickness="5" />
 
         <DeleteUserForm />
-    </AuthenticatedLayout>
 </template>

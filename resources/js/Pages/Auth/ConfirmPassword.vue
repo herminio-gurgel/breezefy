@@ -1,4 +1,7 @@
 <script setup>
+import GuestLayout from "@/Layouts/GuestLayout.vue"
+
+defineOptions({layout: GuestLayout})
 const form = useForm({
     password: "",
 });
@@ -11,7 +14,6 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
         <Head title="Confirm Password" />
 
         <div class="mb-4 text-body-2">
@@ -37,5 +39,4 @@ const submit = () => {
                 />
             </div>
         </v-form>
-    </GuestLayout>
 </template>

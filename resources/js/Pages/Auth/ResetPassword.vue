@@ -1,4 +1,7 @@
 <script setup>
+import GuestLayout from "@/Layouts/GuestLayout.vue"
+
+defineOptions({layout: GuestLayout})
 const props = defineProps({
     email: {
         type: String,
@@ -24,7 +27,6 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
         <Head title="Reset Password" />
 
         <v-form @submit.prevent="submit">
@@ -58,5 +60,4 @@ const submit = () => {
                 />
             </div>
         </v-form>
-    </GuestLayout>
 </template>

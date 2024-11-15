@@ -1,4 +1,7 @@
 <script setup>
+import GuestLayout from "@/Layouts/GuestLayout.vue"
+
+defineOptions({layout: GuestLayout})
 const form = useForm({
     name: "",
     email: "",
@@ -14,7 +17,6 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
         <Head title="Register" />
         <v-form @keydown.enter.prevent="submit" @submit.prevent="submit">
             <v-text-field
@@ -62,5 +64,4 @@ const submit = () => {
                 />
             </div>
         </v-form>
-    </GuestLayout>
 </template>

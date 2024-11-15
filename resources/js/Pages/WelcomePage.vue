@@ -1,4 +1,6 @@
 <script setup>
+
+defineOptions({layout: null})
 defineProps({
     canLogin: {
         type: Boolean,

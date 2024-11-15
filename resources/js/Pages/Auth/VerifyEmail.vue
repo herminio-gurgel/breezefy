@@ -1,4 +1,7 @@
 <script setup>
+import GuestLayout from "@/Layouts/GuestLayout.vue"
+
+defineOptions({layout: GuestLayout})
 const props = defineProps({
     status: {
         type: String,
@@ -17,8 +20,7 @@ const verificationLinkSent = computed(
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Email Verification" />
+        <Head title="Email Verification"/>
 
         <div class="mb-4 text-body-2">
             Thanks for signing up! Before getting started, could you verify your
@@ -53,5 +55,4 @@ const verificationLinkSent = computed(
                 </Link>
             </div>
         </form>
-    </GuestLayout>
 </template>

@@ -1,4 +1,7 @@
 <script setup>
+import GuestLayout from "@/Layouts/GuestLayout.vue"
+
+defineOptions({layout: GuestLayout})
 defineProps({
     status: {
         type: String,
@@ -15,7 +18,6 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
         <Head title="Forgot Password" />
 
         <div class="mb-4 text-body-2">
@@ -45,5 +47,4 @@ const submit = () => {
                 />
             </div>
         </v-form>
-    </GuestLayout>
 </template>
