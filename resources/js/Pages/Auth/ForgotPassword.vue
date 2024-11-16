@@ -1,7 +1,5 @@
 <script setup>
-import GuestLayout from "@/Layouts/GuestLayout.vue"
 
-defineOptions({layout: GuestLayout})
 defineProps({
     status: {
         type: String,

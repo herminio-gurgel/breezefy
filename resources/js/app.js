@@ -10,6 +10,7 @@ import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue"
+import GuestLayout from "@/Layouts/GuestLayout.vue"
 
 const vuetify = createVuetify({
     components,
@@ -50,7 +51,9 @@ createInertiaApp({
     resolve: name => {
         const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
         let page = pages[`./Pages/${name}.vue`]
-        if (page.default.layout === undefined) {
+        if (name.startsWith('Auth/')) {
+            page.default.layout = GuestLayout
+        } else if (page.default.layout === undefined) {
             page.default.layout = AuthenticatedLayout
         }
         return page
