@@ -1,5 +1,4 @@
 <script setup>
-
 const props = defineProps({
     status: {
         type: String,
@@ -18,39 +17,39 @@ const verificationLinkSent = computed(
 </script>
 
 <template>
-        <Head title="Email Verification"/>
+    <Head title="Email Verification" />
 
-        <div class="mb-4 text-body-2">
-            Thanks for signing up! Before getting started, could you verify your
-            email address by clicking on the link we just emailed to you? If you
-            didn't receive the email, we will gladly send you another.
-            <p
-                class="text-success mt-2 font-weight-bold"
-                v-if="verificationLinkSent"
+    <div class="mb-4 text-body-2">
+        Thanks for signing up! Before getting started, could you verify your
+        email address by clicking on the link we just emailed to you? If you
+        didn't receive the email, we will gladly send you another.
+        <p
+            class="text-success mt-2 font-weight-bold"
+            v-if="verificationLinkSent"
+        >
+            A new verification link has been sent to the email address you
+            provided during registration.
+        </p>
+    </div>
+
+    <form @submit.prevent="submit">
+        <div class="mt-4 d-flex align-center justify-space-between">
+            <v-btn
+                type="submit"
+                class="xl-0"
+                color="black"
+                :disabled="form.processing"
+                text="resend verification email"
+            />
+
+            <Link
+                :href="route('logout')"
+                method="post"
+                as="button"
+                class="text-decoration-underline text-body-2"
             >
-                A new verification link has been sent to the email address you
-                provided during registration.
-            </p>
+                Log Out
+            </Link>
         </div>
-
-        <form @submit.prevent="submit">
-            <div class="mt-4 d-flex align-center justify-space-between">
-                <v-btn
-                    type="submit"
-                    class="xl-0"
-                    color="black"
-                    :disabled="form.processing"
-                    text="resend verification email"
-                />
-
-                <Link
-                    :href="route('logout')"
-                    method="post"
-                    as="button"
-                    class="text-decoration-underline text-body-2"
-                >
-                    Log Out
-                </Link>
-            </div>
-        </form>
+    </form>
 </template>

@@ -1,5 +1,4 @@
 <script setup>
-
 const props = defineProps({
     email: {
         type: String,
@@ -25,37 +24,37 @@ const submit = () => {
 </script>
 
 <template>
-        <Head title="Reset Password" />
+    <Head title="Reset Password" />
 
-        <v-form @submit.prevent="submit">
-            <v-text-field
-                v-model="form.email"
-                label="Email"
-                :error-messages="form.errors.email"
+    <v-form @submit.prevent="submit">
+        <v-text-field
+            v-model="form.email"
+            label="Email"
+            :error-messages="form.errors.email"
+        />
+
+        <v-text-field
+            v-model="form.password"
+            label="Password"
+            :error-messages="form.errors.password"
+            type="password"
+        />
+
+        <v-text-field
+            v-model="form.password_confirmation"
+            label="Confirm Password"
+            :error-messages="form.errors.password_confirmation"
+            type="password"
+        />
+
+        <div class="d-flex items-center justify-end mt-4">
+            <v-btn
+                type="submit"
+                color="black"
+                :disabled="form.processing"
+                class="ms-4"
+                text="reset password"
             />
-
-            <v-text-field
-                v-model="form.password"
-                label="Password"
-                :error-messages="form.errors.password"
-                type="password"
-            />
-
-            <v-text-field
-                v-model="form.password_confirmation"
-                label="Confirm Password"
-                :error-messages="form.errors.password_confirmation"
-                type="password"
-            />
-
-            <div class="d-flex items-center justify-end mt-4">
-                <v-btn
-                    type="submit"
-                    color="black"
-                    :disabled="form.processing"
-                    class="ms-4"
-                    text="reset password"
-                />
-            </div>
-        </v-form>
+        </div>
+    </v-form>
 </template>

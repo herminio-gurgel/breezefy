@@ -1,6 +1,5 @@
 <script setup>
-
-import WelcomeLayout from "@/Layouts/WelcomeLayout.vue"
+import WelcomeLayout from "@/Layouts/WelcomeLayout.vue";
 defineOptions({
     layout: WelcomeLayout,
 });

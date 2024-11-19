@@ -19,11 +19,17 @@ const props = defineProps({
 
 <template>
     <v-app>
-        <WelcomeAppBar :canRegister="props.canRegister" :canLogin="props.canLogin" />
+        <WelcomeAppBar
+            :canRegister="props.canRegister"
+            :canLogin="props.canLogin"
+        />
         <v-main>
-            {{props.text}}
-            <slot/>
+            {{ props.text }}
+            <slot />
         </v-main>
-        <WelcomeFooter :laravelVersion="props.laravelVersion" :phpVersion="props.phpVersion"/>
+        <WelcomeFooter
+            :laravelVersion="props.laravelVersion"
+            :phpVersion="props.phpVersion"
+        />
     </v-app>
 </template>
