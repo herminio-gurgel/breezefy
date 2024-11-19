@@ -25,6 +25,9 @@ declare module 'vue' {
     UpdatePasswordForm: typeof import('./resources/js/Components/UpdatePasswordForm.vue')['default']
     UpdateProfileInformationForm: typeof import('./resources/js/Components/UpdateProfileInformationForm.vue')['default']
     VerifyEmail: typeof import('./resources/js/Pages/Auth/VerifyEmail.vue')['default']
+    WelcomeAppBar: typeof import('./resources/js/Components/WelcomeAppBar.vue')['default']
+    WelcomeFooter: typeof import('./resources/js/Components/WelcomeFooter.vue')['default']
+    WelcomeLayout: typeof import('./resources/js/Layouts/WelcomeLayout.vue')['default']
     WelcomePage: typeof import('./resources/js/Pages/WelcomePage.vue')['default']
   }
 }

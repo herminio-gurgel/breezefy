@@ -2,11 +2,11 @@ import "./bootstrap";
 import "@mdi/font/css/materialdesignicons.css";
 import "../css/main.scss";
 
-import { createApp, h } from "vue";
-import { createInertiaApp } from "@inertiajs/vue3";
-import { ZiggyVue } from "../../vendor/tightenco/ziggy";
+import {createApp, h} from "vue";
+import {createInertiaApp} from "@inertiajs/vue3";
+import {ZiggyVue} from "../../vendor/tightenco/ziggy";
 import "vuetify/styles";
-import { createVuetify } from "vuetify";
+import {createVuetify} from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue"
@@ -49,17 +49,17 @@ const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: name => {
-        const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
+        const pages = import.meta.glob('./Pages/**/*.vue', {eager: true})
         let page = pages[`./Pages/${name}.vue`]
         if (name.startsWith('Auth/')) {
             page.default.layout = GuestLayout
-        } else if (page.default.layout === undefined) {
-            page.default.layout = AuthenticatedLayout
+            return page
         }
+        page.default.layout = page.default.layout || AuthenticatedLayout
         return page
     },
-    setup({ el, App, props, plugin }) {
-        return createApp({ render: () => h(App, props) })
+    setup({el, App, props, plugin}) {
+        return createApp({render: () => h(App, props)})
             .use(plugin)
             .use(ZiggyVue)
             .use(vuetify)
