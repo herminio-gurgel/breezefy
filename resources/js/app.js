@@ -52,7 +52,7 @@ createInertiaApp({
         const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
         let page = pages[`./Pages/${name}.vue`];
         if (name.startsWith("Auth/")) {
-            page.default.layout = GuestLayout;
+            page.default.layout = page.default.layout || GuestLayout;
             return page;
         }
         page.default.layout = page.default.layout || AuthenticatedLayout;

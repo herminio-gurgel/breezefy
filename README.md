@@ -22,15 +22,19 @@ foundation for quickly starting modern web applications with a well-defined stru
     Design specification, to support small screens (`sm` breakpoint), medium screens (`md` breakpoint), and large
     screens (`lg` breakpoint).
 -   **Pre-configured Docker Compose**: Includes [MySQL](https://www.mysql.com/) for storage
-    and [Mailpit](https://mailpit.axllent.org/) for
-    testing email sending.
--   **Automated Code Quality Tools**: Configured with [ESLint](https://eslint.org/), [Prettier](https://prettier.io/)
+    and [Mailpit](https://mailpit.axllent.org/) for testing email sending. The Docker setup is pre-configured
+    with [Laravel Sail](https://laravel.com/docs/11.x/sail), providing a simple and efficient environment for running the
+    application in Docker containers.
+-   **Code Quality Tools**: Configured with [ESLint](https://eslint.org/), [Prettier](https://prettier.io/)
     , [Laravel Pint](https://laravel.com/docs/11.x/pint), and [Commitlint](https://commitlint.js.org/), all managed
     by [Husky](https://typicode.github.io/husky/) to ensure code quality and commit message consistency.
 -   **Automatic Component and API Imports**:
     Uses [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) to automatically import Vue
     components and [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) to automatically import common
     APIs from Vue, Vuetify, and Inertia.js, reducing the need for manual imports throughout the application.
+-   **Persistent Layouts**: Uses **Inertia.js** to manage pages layouts. The layout system is
+    designed to be flexible, allowing for automatic layout handling as well as manual configuration for specific pages or
+    components.
 
 ## Prerequisites
 
@@ -128,7 +132,7 @@ To customize the project, follow these guidelines:
 ### Application Links
 
 The application's main navigation is defined in two files located
-in `resources/js/Layouts/AuthenticatedLayout/Partials/`.
+in `resources/js/Components/`.
 
 The `NavigationLinks.vue` file stores links for navigating through the application bar. You can add, remove, or modify
 these
@@ -174,12 +178,102 @@ pre-commit hooks. For more details, refer to the documentation of each tool:
 
 ### Automatic Imports
 
-The project leverages automated component and API imports to simplify development. The following plugins are used to eliminate the need for manual imports:
+The project leverages automated component and API imports to simplify development. The following plugins are used to
+eliminate the need for manual imports:
 
--   **[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)**: Automatically imports Vue components, reducing the need to manually import components in every file.
--   **[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)**: Automatically imports common APIs from Vue, Vuetify, and Inertia.js, improving productivity by removing repetitive import statements.
+-   **[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)**: Automatically imports Vue components,
+    reducing the need to manually import components in every file.
+-   **[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)**: Automatically imports common APIs from Vue,
+    Vuetify, and Inertia.js, improving productivity by removing repetitive import statements.
 
 These plugins are integrated into the build process, streamlining development and making the codebase cleaner.
+
+### Persistent Layout Handling
+
+The `resources/js/app.js` file contains the Inertia.js configurations, including layout definitions for each page, which
+are configured within the `resolve` callback. This callback applies the logic for associating specific layouts to pages
+based on the project’s structure.
+
+For more details on the documentation, visit the Inertia.js Pages section
+on [Persistent Layouts](https://inertiajs.com/pages#persistent-layouts).
+
+#### Example Configuration:
+
+```javascript
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import GuestLayout from "@/Layouts/GuestLayout.vue";
+
+resolve: (name) => {
+    const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
+    let page = pages[`./Pages/${name}.vue`];
+
+    // Check if the page is in the Auth/ directory
+    if (name.startsWith("Auth/")) {
+        page.default.layout = page.default.layout || GuestLayout;
+        return page;
+    }
+
+    // Otherwise, apply the default layout for authenticated pages
+    page.default.layout = page.default.layout || AuthenticatedLayout;
+    return page;
+};
+```
+
+In this example, the default layout for all pages is AuthenticatedLayout. However, it’s possible to configure specific
+layouts based on the directory of the page, as shown for the `Auth/` directory, where the default layout is changed to
+GuestLayout. You can even add your own directories and layouts as shown in the example below
+
+```javascript
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import GuestLayout from "@/Layouts/GuestLayout.vue";
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+
+resolve: (name) => {
+    const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
+    let page = pages[`./Pages/${name}.vue`];
+
+    // Check if the page is in the Auth/ directory
+    if (name.startsWith("Auth/")) {
+        page.default.layout = page.default.layout || GuestLayout;
+        return page;
+    }
+
+    // Check if the page is in the Admin/ directory
+    if (name.startsWith("Admin/")) {
+        page.default.layout = page.default.layout || AdminLayout;
+        return page;
+    }
+
+    // Default layout for other pages
+    page.default.layout = page.default.layout || AuthenticatedLayout;
+    return page;
+};
+```
+
+In this example, any page within the Admin/ directory will automatically be associated with the AdminLayout. You can add
+other checks to set different layouts depending on your application's directories.
+
+#### Using defineOptions plugin
+
+Additionally, the [defineOptions](https://vue-macros.dev/macros/define-options.html) plugin is already pre-installed,
+allowing you to manually define the layout for each
+page. It’s important to note that in this
+case, you must explicitly import the layout component, as the unplugin-vue-components only works with the template, not
+within the
+script.
+
+```vue
+<script setup>
+import WelcomeLayout from "@/Layouts/WelcomeLayout.vue";
+
+defineOptions({
+    layout: WelcomeLayout,
+});
+</script>
+```
+
+In this example, the use of defineOptions in the component overrides the default layout of the component, whether it's
+AuthenticatedLayout or any layout defined in the component's directory.
 
 By following these guidelines, you can easily customize Breezefy to better suit your project requirements, building on
 top of this robust starter kit.
