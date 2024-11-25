@@ -1,5 +1,9 @@
 <script setup>
 const drawer = ref(false);
+
+router.on("start", () => {
+    drawer.value = false;
+});
 </script>
 
 <template>
