@@ -48,9 +48,10 @@ const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => {
-        const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
-        let page = pages[`./Pages/${name}.vue`];
+    resolve: async (name) => {
+        const pages = import.meta.glob("./Pages/**/*.vue");
+        const page = await pages[`./Pages/${name}.vue`]();
+
         if (name.startsWith("Auth/")) {
             page.default.layout = page.default.layout || GuestLayout;
             return page;
